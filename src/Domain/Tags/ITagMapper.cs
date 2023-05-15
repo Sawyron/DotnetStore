@@ -1,6 +1,6 @@
 ﻿using Domain.Categories;
 
-namespace Domain.ProductTypes.Details;
+namespace Domain.Tags;
 
 public interface ITagMapper<T>
 {

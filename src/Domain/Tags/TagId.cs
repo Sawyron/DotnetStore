@@ -1,3 +1,3 @@
-﻿namespace Domain.ProductTypes.Details;
+﻿namespace Domain.Tags;
 
 public sealed record TagId(Guid Value);

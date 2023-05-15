@@ -1,7 +1,7 @@
 ﻿using Domain.Categories;
 using Domain.Products;
-using Domain.ProductTypes.Details;
 using Domain.ProductTypes.Tags.TagOptions;
+using Domain.Tags;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data.Products;
 using Persistence.Data.TagOptions;

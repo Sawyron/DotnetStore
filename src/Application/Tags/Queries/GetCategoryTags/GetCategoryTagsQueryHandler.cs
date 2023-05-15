@@ -1,5 +1,5 @@
 ﻿using Application.Tags.Commands.CreateTags;
-using Domain.ProductTypes.Details;
+using Domain.Tags;
 using MediatR;
 
 namespace Application.Tags.Queries.GetCategoryTags;

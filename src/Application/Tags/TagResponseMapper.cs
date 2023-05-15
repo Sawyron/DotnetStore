@@ -1,6 +1,6 @@
 ﻿using Application.Tags.Commands.CreateTags;
 using Domain.Categories;
-using Domain.ProductTypes.Details;
+using Domain.Tags;
 
 namespace Application.Tags;
 

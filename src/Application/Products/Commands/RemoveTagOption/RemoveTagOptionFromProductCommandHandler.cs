@@ -1,8 +1,8 @@
 ﻿using Application.Core;
 using Application.Exceptions.Products;
 using Application.TagOptions;
-using Domain.ProductTypes.Details;
 using Domain.ProductTypes.Tags.TagOptions;
+using Domain.Tags;
 using MediatR;
 
 namespace Application.Products.Commands.RemoveTagOption;

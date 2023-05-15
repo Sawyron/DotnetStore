@@ -6,6 +6,7 @@ using Application.Tags;
 using Application.Tags.Commands.CreateTag;
 using Domain.Categories;
 using Domain.ProductTypes.Details;
+using Domain.Tags;
 using Moq;
 
 namespace Application.UnitTests.Tags.Commands.CreateTag;

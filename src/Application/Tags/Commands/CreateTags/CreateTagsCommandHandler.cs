@@ -1,7 +1,7 @@
 ﻿using Application.Categories;
 using Application.Core;
 using Application.Exceptions.Categories;
-using Domain.ProductTypes.Details;
+using Domain.Tags;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 

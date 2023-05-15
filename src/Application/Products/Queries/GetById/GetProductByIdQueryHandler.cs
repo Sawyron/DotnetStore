@@ -3,8 +3,8 @@ using Application.TagOptions;
 using Domain.Categories;
 using Domain.Files;
 using Domain.Products;
-using Domain.ProductTypes.Details;
 using Domain.ProductTypes.Tags.TagOptions;
+using Domain.Tags;
 using MediatR;
 
 namespace Application.Products.Queries.GetById;

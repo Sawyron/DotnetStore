@@ -1,5 +1,5 @@
 ﻿using Application.Core;
-using Domain.ProductTypes.Details;
+using Domain.Tags;
 
 namespace Application.TagOptions.Queries.GetPageByTagId;
 

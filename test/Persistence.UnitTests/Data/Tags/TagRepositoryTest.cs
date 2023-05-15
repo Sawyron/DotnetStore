@@ -1,5 +1,5 @@
 ﻿using Domain.Categories;
-using Domain.ProductTypes.Details;
+using Domain.Tags;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data.Categories;
 using Persistence.Data.Tags;

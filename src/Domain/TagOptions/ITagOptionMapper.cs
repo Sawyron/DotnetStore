@@ -1,4 +1,4 @@
-﻿using Domain.ProductTypes.Details;
+﻿using Domain.Tags;
 
 namespace Domain.ProductTypes.Tags.TagOptions;
 

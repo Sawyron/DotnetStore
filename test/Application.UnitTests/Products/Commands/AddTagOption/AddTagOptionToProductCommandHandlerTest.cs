@@ -10,6 +10,7 @@ using Domain.Files;
 using Domain.Products;
 using Domain.ProductTypes.Details;
 using Domain.ProductTypes.Tags.TagOptions;
+using Domain.Tags;
 using Moq;
 
 namespace Application.UnitTests.Products.Commands.AddTagOption;

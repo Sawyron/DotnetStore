@@ -1,6 +1,6 @@
 ﻿using Application.Tags;
 using Domain.Categories;
-using Domain.ProductTypes.Details;
+using Domain.Tags;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Data.Tags;

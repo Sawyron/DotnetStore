@@ -4,7 +4,7 @@ using Application.Tags.Commands.CreateTag;
 using Application.Tags.Commands.DeleteTag;
 using Application.Tags.Commands.UpdateTag;
 using Domain.Categories;
-using Domain.ProductTypes.Details;
+using Domain.Tags;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

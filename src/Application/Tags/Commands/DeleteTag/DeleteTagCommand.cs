@@ -1,4 +1,4 @@
-﻿using Domain.ProductTypes.Details;
+﻿using Domain.Tags;
 using MediatR;
 
 namespace Application.Tags.Commands.DeleteTag;

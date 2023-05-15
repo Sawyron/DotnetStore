@@ -1,5 +1,5 @@
-﻿using Domain.ProductTypes.Details;
-using Domain.ProductTypes.Tags.TagOptions;
+﻿using Domain.ProductTypes.Tags.TagOptions;
+using Domain.Tags;
 using MediatR;
 
 namespace Application.TagOptions.Commands.UpdateTagOption;

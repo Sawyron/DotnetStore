@@ -1,7 +1,7 @@
 ﻿using Domain.Categories;
 using Domain.Products;
-using Domain.ProductTypes.Details;
 using Domain.ProductTypes.Tags.TagOptions;
+using Domain.Tags;
 
 namespace Application.TagOptions;
 
