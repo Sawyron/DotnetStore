@@ -1,8 +1,8 @@
 ﻿using Application.TagOptions.Commands.CreateTagOption;
 using Application.TagOptions.Commands.DeleteTagOption;
 using Application.TagOptions.Commands.UpdateTagOption;
-using Domain.ProductTypes.Details;
 using Domain.ProductTypes.Tags.TagOptions;
+using Domain.Tags;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

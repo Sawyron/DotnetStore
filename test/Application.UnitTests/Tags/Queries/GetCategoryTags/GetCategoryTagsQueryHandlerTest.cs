@@ -1,7 +1,7 @@
 ﻿using Application.Tags;
 using Application.Tags.Queries.GetCategoryTags;
 using Domain.Categories;
-using Domain.ProductTypes.Details;
+using Domain.Tags;
 using Moq;
 
 namespace Application.UnitTests.Tags.Queries.GetCategoryTags;

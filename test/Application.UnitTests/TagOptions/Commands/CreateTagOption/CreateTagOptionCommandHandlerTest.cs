@@ -4,7 +4,6 @@ using Application.TagOptions;
 using Application.TagOptions.Commands.CreateTagOption;
 using Application.Tags;
 using Domain.Categories;
-using Domain.ProductTypes.Details;
 using Domain.ProductTypes.Tags.TagOptions;
 using Domain.Tags;
 using Moq;

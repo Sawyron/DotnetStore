@@ -5,8 +5,8 @@ using Application.TagOptions;
 using Application.TagOptions.Commands.UpdateTagOption;
 using Application.Tags;
 using Domain.Categories;
-using Domain.ProductTypes.Details;
 using Domain.ProductTypes.Tags.TagOptions;
+using Domain.Tags;
 using Moq;
 
 namespace Application.UnitTests.TagOptions.Commands.UpdateTagOption;

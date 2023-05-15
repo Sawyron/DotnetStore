@@ -2,7 +2,7 @@
 using Application.Exceptions.Tags;
 using Application.Tags;
 using Application.Tags.Commands.DeleteTag;
-using Domain.ProductTypes.Details;
+using Domain.Tags;
 using Moq;
 
 namespace Application.UnitTests.Tags.Commands.DeleteTag;

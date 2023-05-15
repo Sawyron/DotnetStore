@@ -1,7 +1,7 @@
 ﻿using Application.TagOptions;
 using Application.TagOptions.Queries.GetPageByTagId;
-using Domain.ProductTypes.Details;
 using Domain.ProductTypes.Tags.TagOptions;
+using Domain.Tags;
 using Moq;
 
 namespace Application.UnitTests.TagOptions.Queries;
