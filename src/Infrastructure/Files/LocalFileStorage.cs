@@ -1,7 +1,6 @@
 ﻿using Application.Files;
 using Domain.Files;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Files;
 
@@ -35,7 +34,7 @@ internal class LocalFileStorage : IFileStorage
         return (content, extension);
     }
 
-    async Task<StoredFile> IFileStorage.SaveFileAsync(byte[] content, string extension)
+    public async Task<StoredFile> SaveFileAsync(byte[] content, string extension)
     {
         var id = Guid.NewGuid();
         string path = Path.Combine(_uploadsFolder, id.ToString() + extension);

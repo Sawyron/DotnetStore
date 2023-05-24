@@ -1,6 +1,5 @@
 ﻿using Application.Authentication.Login;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Authentication.Requests;
 

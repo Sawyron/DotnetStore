@@ -35,7 +35,7 @@ public class RemoveTagOptionFromProductCommandHandlerTest
                 new CategoryId(new Guid())));
         var optionId = new TagOptionId(new Guid("77645258-E5BC-493E-8B80-44CBB7891201"));
         _optionRepositoryMock.Setup(repo => repo.GetProductConfigurationAsync(productId))
-            .ReturnsAsync(new List<(Tag Tag, TagOption TagOption)> 
+            .ReturnsAsync(new List<(Tag Tag, TagOption TagOption)>
             {
                 (new Tag(
                     new TagId(new Guid()),
