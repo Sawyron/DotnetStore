@@ -1,5 +1,6 @@
 ﻿using Application.Files;
 using Domain.Files;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Files;
@@ -9,9 +10,9 @@ internal class LocalFileStorage : IFileStorage
     private readonly string _uploadsFolder;
     private readonly IFileMapper<string> _pathMapper;
 
-    public LocalFileStorage(IConfiguration configuration, IFileMapper<string> pathMapper)
+    public LocalFileStorage(IFileMapper<string> pathMapper, IWebHostEnvironment enviroment)
     {
-        _uploadsFolder = configuration["ImageFolder"]!;
+        _uploadsFolder = Path.Combine(enviroment.WebRootPath, "Uploads");
         _pathMapper = pathMapper;
     }
 

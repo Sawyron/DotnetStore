@@ -15,6 +15,9 @@
 *.db-shm
 *.db-wal
 
+# Uploads folder
+src/WebApi/wwwroot/Uploads/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
