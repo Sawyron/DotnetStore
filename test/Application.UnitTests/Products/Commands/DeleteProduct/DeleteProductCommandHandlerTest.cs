@@ -1,6 +1,7 @@
 ﻿using Application.Core;
 using Application.Exceptions.Products;
 using Application.Files;
+using Application.Images;
 using Application.Products;
 using Application.Products.Commands.DeleteProduct;
 using Domain.Categories;
@@ -14,6 +15,8 @@ namespace Application.UnitTests.Products.Commands.DeleteProduct;
 public class DeleteProductCommandHandlerTest
 {
     private readonly Mock<IProductRepository> _repositoryMock;
+    private readonly Mock<IFileRepository> _fileRepositoryMock;
+    private readonly FileIdMapper _fileIdMapper;
     private readonly Mock<IFileStorage> _storageMock;
     private readonly ProductFileMapper _mapper;
     private readonly Mock<IUnitOfWork> _unitOfWorkMock;
@@ -21,6 +24,8 @@ public class DeleteProductCommandHandlerTest
     public DeleteProductCommandHandlerTest()
     {
         _repositoryMock = new();
+        _fileRepositoryMock = new();
+        _fileIdMapper = new();
         _storageMock = new();
         _mapper = new();
         _unitOfWorkMock = new();
@@ -31,7 +36,8 @@ public class DeleteProductCommandHandlerTest
     {
         // Arrange
         var productId = new ProductId(new Guid("6307B68D-B15E-4394-9F2C-868EB45C121A"));
-        var file = new StoredFile(new FileId(new Guid("147C685F-E2C8-40F4-A830-92D3AF41CB98")), string.Empty);
+        FileId fileId = new FileId(new Guid("147C685F-E2C8-40F4-A830-92D3AF41CB98"));
+        var file = new StoredFile(fileId, string.Empty);
         _repositoryMock.Setup(repo => repo.FindByIdAsync(productId))
             .ReturnsAsync(new Product(
                 productId,
@@ -43,7 +49,9 @@ public class DeleteProductCommandHandlerTest
                 new CategoryId(new Guid("D0703F79-3D9E-4188-935E-0B72E6658AB5"))));
         var handler = new DeleteProductCommandHandler(
             _repositoryMock.Object,
+            _fileRepositoryMock.Object,
             _storageMock.Object,
+            _fileIdMapper,
             _mapper,
             _unitOfWorkMock.Object);
         // Act
@@ -52,6 +60,7 @@ public class DeleteProductCommandHandlerTest
         _repositoryMock.Verify(repo => repo.FindByIdAsync(productId), Times.Once());
         _repositoryMock.Verify(repo => repo.DeleteAsync(productId), Times.Once());
         _storageMock.Verify(s => s.DeleteFile(file), Times.Once());
+        _fileRepositoryMock.Verify(fr => fr.DeleteAsync(fileId), Times.Once());
         _unitOfWorkMock.Verify(u => u.SaveChangesAsync(default));
     }
 
@@ -64,7 +73,9 @@ public class DeleteProductCommandHandlerTest
             .ReturnsAsync((Product)null!);
         var handler = new DeleteProductCommandHandler(
             _repositoryMock.Object,
+            _fileRepositoryMock.Object,
             _storageMock.Object,
+            _fileIdMapper,
             _mapper,
             _unitOfWorkMock.Object);
         // Act & Assert
@@ -75,6 +86,7 @@ public class DeleteProductCommandHandlerTest
         _repositoryMock.Verify(repo => repo.FindByIdAsync(productId), Times.Once());
         _repositoryMock.VerifyNoOtherCalls();
         _storageMock.VerifyNoOtherCalls();
+        _fileRepositoryMock.VerifyNoOtherCalls();
         _unitOfWorkMock.VerifyNoOtherCalls();
     }
 }

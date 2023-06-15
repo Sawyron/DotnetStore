@@ -28,7 +28,7 @@ internal class LocalFileStorage : IFileStorage
 
     public async Task<(byte[] content, string extension)> ReadFileAsync(StoredFile file)
     {
-        string path = file.Map(_pathMapper);
+        string path = Path.Combine(_uploadsFolder, file.Map(_pathMapper));
         var extension = new string(Path.GetExtension(path).Skip(1).ToArray());
         byte[] content = await File.ReadAllBytesAsync(path);
         return (content, extension);
@@ -37,8 +37,8 @@ internal class LocalFileStorage : IFileStorage
     public async Task<StoredFile> SaveFileAsync(byte[] content, string extension)
     {
         var id = Guid.NewGuid();
-        string path = Path.Combine(_uploadsFolder, id.ToString() + extension);
-        using (var stream = new FileStream(path, FileMode.Create))
+        string path = id.ToString() + extension;
+        using (var stream = new FileStream(Path.Combine(_uploadsFolder, path), FileMode.Create))
         {
             await stream.WriteAsync(content);
         }
