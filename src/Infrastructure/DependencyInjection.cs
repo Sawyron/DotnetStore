@@ -5,6 +5,7 @@ using Infrastructure.Authentication;
 using Infrastructure.Authentication.OptionSetups;
 using Infrastructure.Files;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure;
@@ -18,11 +19,11 @@ public static class DependencyInjection
         return services;
     }
 
-    public static IServiceCollection AddAuth(this IServiceCollection services)
+    public static IServiceCollection AddAuth(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer();
-        services.ConfigureOptions<JwtOptionsSetup>();
+        services.Configure<JwtOptions>(configuration.GetSection("Jwt"));
         services.ConfigureOptions<JwtBearerOptionsSetup>();
         services.AddSingleton<IJwtProvider, JwtProvider>();
         return services;

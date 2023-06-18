@@ -22,7 +22,7 @@ builder.Services
     .AddApplication()
     .AddPersistence(builder.Configuration)
     .AddInfrastructure()
-    .AddAuth();
+    .AddAuth(builder.Configuration);
 
 var app = builder.Build();
 

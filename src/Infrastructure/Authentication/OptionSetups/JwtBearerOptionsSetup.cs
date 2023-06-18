@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Infrastructure.Authentication.OptionSetups;
 
-internal class JwtBearerOptionsSetup : IConfigureNamedOptions<JwtBearerOptions>
+internal class JwtBearerOptionsSetup : IConfigureOptions<JwtBearerOptions>
 {
     private readonly JwtOptions _jwtOptions;
 
@@ -14,17 +14,7 @@ internal class JwtBearerOptionsSetup : IConfigureNamedOptions<JwtBearerOptions>
         _jwtOptions = jwtOptions.Value;
     }
 
-    public void Configure(string? name, JwtBearerOptions options)
-    {
-        ConfigureBearerOptions(options);
-    }
-
     public void Configure(JwtBearerOptions options)
-    {
-        ConfigureBearerOptions(options);
-    }
-
-    private void ConfigureBearerOptions(JwtBearerOptions options)
     {
         options.TokenValidationParameters = new()
         {
