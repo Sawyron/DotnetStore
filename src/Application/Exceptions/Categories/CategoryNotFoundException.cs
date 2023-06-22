@@ -1,14 +1,12 @@
-﻿using Application.Core;
-using Domain.Categories;
-using Microsoft.AspNetCore.Http;
+﻿using Domain.Categories;
 
 namespace Application.Exceptions.Categories;
 
-public sealed class CategoryNotFoundException : ServerApplicationException
+public sealed class CategoryNotFoundException : ResourceNotFoundException
 {
 
-    public CategoryNotFoundException(CategoryId categoryId, int statusCode = StatusCodes.Status404NotFound) :
-        base($"Category with id '{categoryId.Value}' is not found", statusCode)
+    public CategoryNotFoundException(CategoryId categoryId) :
+        base($"Category with id '{categoryId.Value}' is not found")
     { }
 
 }

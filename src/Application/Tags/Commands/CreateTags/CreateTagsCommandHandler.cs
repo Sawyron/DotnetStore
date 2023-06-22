@@ -3,7 +3,6 @@ using Application.Core;
 using Application.Exceptions.Categories;
 using Domain.Tags;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 
 namespace Application.Tags.Commands.CreateTags;
 
@@ -30,7 +29,7 @@ public record CreateTagsCommandHandler : IRequestHandler<CreateTagsCommand, IEnu
     {
         if (await _categoryRepository.FindByIdAsync(request.CategoryId) is null)
         {
-            throw new CategoryNotFoundException(request.CategoryId, StatusCodes.Status409Conflict);
+            throw new CategoryNotFoundException(request.CategoryId);
         }
         List<Tag> tags = request.Tags.
                     Select(d => new Tag(new TagId(Guid.NewGuid()), d.Name, request.CategoryId))

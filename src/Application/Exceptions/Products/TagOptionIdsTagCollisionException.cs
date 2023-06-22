@@ -1,10 +1,7 @@
-﻿using Application.Core;
-using Microsoft.AspNetCore.Http;
+﻿namespace Application.Exceptions.Products;
 
-namespace Application.Exceptions.Products;
-
-internal class TagOptionIdsTagCollisionException : ServerApplicationException
+internal class TagOptionIdsTagCollisionException : ResourceStateConflictException
 {
     public TagOptionIdsTagCollisionException()
-        : base("More than one tag options ids belong to the same tag", StatusCodes.Status409Conflict) { }
+        : base("More than one tag options ids belong to the same tag") { }
 }

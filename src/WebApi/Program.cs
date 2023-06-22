@@ -2,6 +2,7 @@ using Application;
 using Infrastructure;
 using Microsoft.AspNetCore.Http.Features;
 using Persistence;
+using WebApi;
 using WebApi.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,7 +23,8 @@ builder.Services
     .AddApplication()
     .AddPersistence(builder.Configuration)
     .AddInfrastructure()
-    .AddAuth(builder.Configuration);
+    .AddAuth(builder.Configuration)
+    .AddExceptionHandling();
 
 var app = builder.Build();
 

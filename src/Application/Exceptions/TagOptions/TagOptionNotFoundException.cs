@@ -1,11 +1,9 @@
-﻿using Application.Core;
-using Domain.ProductTypes.Tags.TagOptions;
-using Microsoft.AspNetCore.Http;
+﻿using Domain.ProductTypes.Tags.TagOptions;
 
 namespace Application.Exceptions.TagOptions;
 
-internal class TagOptionNotFoundException : ServerApplicationException
+internal class TagOptionNotFoundException : ResourceNotFoundException
 {
     public TagOptionNotFoundException(TagOptionId id)
-        : base($"Tag optins with id '{id.Value}' is not found", StatusCodes.Status404NotFound) { }
+        : base($"Tag optins with id '{id.Value}' is not found") { }
 }

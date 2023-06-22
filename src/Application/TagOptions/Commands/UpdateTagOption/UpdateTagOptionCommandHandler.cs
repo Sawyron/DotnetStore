@@ -4,7 +4,6 @@ using Application.Exceptions.Tags;
 using Application.Tags;
 using Domain.ProductTypes.Tags.TagOptions;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 
 namespace Application.TagOptions.Commands.UpdateTagOption;
 
@@ -32,7 +31,7 @@ internal class UpdateTagOptionCommandHandler : IRequestHandler<UpdateTagOptionCo
         }
         if (await _tagRepository.FindByIdAsync(request.TagId) is null)
         {
-            throw new TagNotFoundException(request.TagId, StatusCodes.Status409Conflict);
+            throw new TagNotFoundException(request.TagId);
         }
         var option = new TagOption(request.Id, request.Value, request.TagId);
         await _tagOptionRepository.UpdateAsync(option);

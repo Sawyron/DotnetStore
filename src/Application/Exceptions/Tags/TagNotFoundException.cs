@@ -1,11 +1,9 @@
-﻿using Application.Core;
-using Domain.Tags;
-using Microsoft.AspNetCore.Http;
+﻿using Domain.Tags;
 
 namespace Application.Exceptions.Tags;
 
-internal class TagNotFoundException : ServerApplicationException
+internal class TagNotFoundException : ResourceNotFoundException
 {
-    public TagNotFoundException(TagId tagId, int statusCode = StatusCodes.Status404NotFound)
-        : base($"Tag with id '{tagId.Value}' is not found", statusCode) { }
+    public TagNotFoundException(TagId tagId)
+        : base($"Tag with id '{tagId.Value}' is not found") { }
 }

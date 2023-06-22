@@ -4,7 +4,6 @@ using Application.Exceptions.Categories;
 using Application.Exceptions.Tags;
 using Domain.Tags;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 
 namespace Application.Tags.Commands.UpdateTag;
 
@@ -32,7 +31,7 @@ internal class UpdateTagCommandHandler : IRequestHandler<UpdateTagCommand>
         }
         if (await _categoryRepository.FindByIdAsync(request.CategoryId) is null)
         {
-            throw new CategoryNotFoundException(request.CategoryId, StatusCodes.Status409Conflict);
+            throw new CategoryNotFoundException(request.CategoryId);
         }
         var tag = new Tag(request.Id, request.Name, request.CategoryId);
         await _tagRepository.UpdateAsync(tag);

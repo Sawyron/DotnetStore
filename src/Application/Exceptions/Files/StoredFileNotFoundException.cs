@@ -1,11 +1,9 @@
-﻿using Application.Core;
-using Domain.Files;
-using Microsoft.AspNetCore.Http;
+﻿using Domain.Files;
 
 namespace Application.Exceptions.Files;
 
-internal class StoredFileNotFoundException : ServerApplicationException
+internal class StoredFileNotFoundException : ResourceNotFoundException
 {
     public StoredFileNotFoundException(FileId id)
-        : base($"Photo with id '{id.Value}' is not found", StatusCodes.Status404NotFound) { }
+        : base($"Photo with id '{id.Value}' is not found") { }
 }

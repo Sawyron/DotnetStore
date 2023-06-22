@@ -1,7 +1,6 @@
 ﻿using Application.Core;
 using Application.Exceptions.Tags;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 
 namespace Application.Tags.Commands.DeleteTag;
 
@@ -21,7 +20,7 @@ internal class DeleteTagCommandHandler : IRequestHandler<DeleteTagCommand>
         bool result = await _tagRepository.DeleteAsync(request.Id);
         if (!result)
         {
-            throw new TagNotFoundException(request.Id, StatusCodes.Status409Conflict);
+            throw new TagNotFoundException(request.Id);
         }
         await _unitOfWork.SaveChangesAsync(cancellationToken);
     }

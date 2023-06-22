@@ -3,7 +3,6 @@ using Application.Exceptions.Tags;
 using Application.Tags;
 using Domain.ProductTypes.Tags.TagOptions;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 
 namespace Application.TagOptions.Commands.CreateTagOption;
 
@@ -24,7 +23,7 @@ internal class CreateTagOptonCommandHandler : IRequestHandler<CreateTagOptionCom
     {
         if (await _tagRepository.FindByIdAsync(request.TagId) is null)
         {
-            throw new TagNotFoundException(request.TagId, StatusCodes.Status404NotFound);
+            throw new TagNotFoundException(request.TagId);
         }
         var tagOptionId = new TagOptionId(Guid.NewGuid());
         var tagOption = new TagOption(tagOptionId, request.Value, request.TagId);
