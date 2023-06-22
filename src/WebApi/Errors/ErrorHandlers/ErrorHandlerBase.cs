@@ -5,12 +5,7 @@ namespace WebApi.Errors.ErrorHandlers;
 public abstract class ErrorHandlerBase<T> : IErrorHandler
     where T : Exception
 {
-    public bool CanHandle(Exception exception)
-    {
-        Type te = exception.GetType();
-        Type tt = typeof(T);
-        return exception is T;
-    }
+    public bool CanHandle(Exception exception) => exception is T;
 
     public IActionResult Handle(Exception exception, ControllerBase controller)
     {
