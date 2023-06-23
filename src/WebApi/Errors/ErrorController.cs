@@ -20,15 +20,11 @@ public class ErrorController : ControllerBase
     {
         Exception? exception = HttpContext.Features?.Get<IExceptionHandlerFeature>()?.Error;
         _logger.LogError(exception, "{Exception}", exception?.Message);
-        IActionResult actionResult;
-        if (_errorHandler.CanHandle(exception!))
+        IActionResult actionResult = _errorHandler.CanHandle(exception!) switch
         {
-            actionResult = _errorHandler.Handle(exception!, this);
-        }
-        else
-        {
-            actionResult = Problem(title: "Internal server error", statusCode: StatusCodes.Status500InternalServerError);
-        }
+            true => _errorHandler.Handle(exception!, this),
+            false => Problem(title: "Internal server error", statusCode: StatusCodes.Status500InternalServerError)
+        };
         return actionResult;
     }
 }
