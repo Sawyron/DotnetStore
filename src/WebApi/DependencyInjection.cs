@@ -1,28 +1,27 @@
 ﻿using WebApi.Errors;
 using WebApi.Errors.ErrorHandlers;
 
-namespace WebApi
+namespace WebApi;
+
+public static class DependencyInjection
 {
-    public static class DependencyInjection
+    public static IServiceCollection AddExceptionHandling(this IServiceCollection services)
     {
-        public static IServiceCollection AddExceptionHandling(this IServiceCollection services)
+        services.AddSingleton<ResourceNotFoundExceptionHandler>();
+        services.AddSingleton<ResourceDublicationExceptionHandler>();
+        services.AddSingleton<ResourceStateConflictExceptionHandler>();
+        services.AddSingleton<ValidationExceptionHandler>();
+        services.AddSingleton<IErrorHandler>(s =>
         {
-            services.AddSingleton<ResourceNotFoundExceptionHandler>();
-            services.AddSingleton<ResourceDublicationExceptionHandler>();
-            services.AddSingleton<ResourceStateConflictExceptionHandler>();
-            services.AddSingleton<ValidationExceptionHandler>();
-            services.AddSingleton<IErrorHandler>(s =>
+            var provider = new AggregateErrorHandler(new IErrorHandler[]
             {
-                var provider = new AggregateErrorHandler(new IErrorHandler[]
-                {
-                    s.GetService<ResourceNotFoundExceptionHandler>()!,
-                    s.GetService<ResourceDublicationExceptionHandler>()!,
-                    s.GetService<ResourceStateConflictExceptionHandler>()!,
-                    s.GetService<ValidationExceptionHandler>()!
-                });
-                return provider;
+                s.GetService<ResourceNotFoundExceptionHandler>()!,
+                s.GetService<ResourceDublicationExceptionHandler>()!,
+                s.GetService<ResourceStateConflictExceptionHandler>()!,
+                s.GetService<ValidationExceptionHandler>()!
             });
-            return services;
-        }
+            return provider;
+        });
+        return services;
     }
 }
