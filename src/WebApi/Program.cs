@@ -28,14 +28,17 @@ builder.Services
 
 var app = builder.Build();
 
+app.UseRequestLocalization(new RequestLocalizationOptions()
+    .SetDefaultCulture("en-US")
+    .AddSupportedCultures("en-US")
+    .AddSupportedUICultures("en-US"));
+
 app.UseCors(builder => builder
     .AllowAnyOrigin()
     .AllowAnyMethod()
     .AllowAnyHeader());
 
 app.UseExceptionHandler("/error");
-
-app.UseRequestLocalization(new RequestLocalizationOptions().SetDefaultCulture("en-US"));
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Infrastructure.Authentication.OptionSetups;
 
-internal class JwtBearerOptionsSetup : IConfigureOptions<JwtBearerOptions>
+internal class JwtBearerOptionsSetup : IConfigureNamedOptions<JwtBearerOptions>
 {
     private readonly JwtOptions _jwtOptions;
 
@@ -28,4 +28,6 @@ internal class JwtBearerOptionsSetup : IConfigureOptions<JwtBearerOptions>
                 Encoding.UTF8.GetBytes(_jwtOptions.Secret))
         };
     }
+
+    public void Configure(string? name, JwtBearerOptions options) => Configure(options);
 }

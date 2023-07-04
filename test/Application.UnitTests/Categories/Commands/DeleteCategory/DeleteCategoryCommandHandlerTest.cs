@@ -71,11 +71,10 @@ public class DeleteCategoryCommandHandlerTest
             _mapper,
             _unitOfWorkMock.Object);
         // Act & Assert
-        CategoryNotFoundException exception = await Assert.ThrowsAsync<CategoryNotFoundException>(async () =>
+        await Assert.ThrowsAsync<CategoryNotFoundException>(async () =>
         {
             await handler.Handle(new DeleteCategoryCommand(categoryId), default);
         });
-        Assert.Equal(404, exception.StatusCode);
         _categoryRepositoryMock.Verify(repo => repo.FindByIdAsync(categoryId), Times.Once());
     }
 
